@@ -107,6 +107,7 @@ public class SuperheroStubRepository implements ISuperheroRepository {
         return null;
     }
 
+    @Override
     public CityDTO getCity(String cityName) {
         for (CityDTO dto : cityDTOS) {
             if (cityName.equalsIgnoreCase(dto.getCity())) {
@@ -116,6 +117,7 @@ public class SuperheroStubRepository implements ISuperheroRepository {
         return null;
     }
 
+    @Override
     public List<CityDTO> getAllHeroesInCity() {
         return cityDTOS;
     }
