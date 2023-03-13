@@ -63,8 +63,8 @@ public class SuperheroController {
 
 
     @GetMapping("/city/{name}") // request 4 - displays city with x amount of heroes
-    public ResponseEntity<List<CityDTO>> getCity(@PathVariable String name) {
-        List<CityDTO> cities = superheroRepository.getCity(name);
+    public ResponseEntity<CityDTO> getCity(@PathVariable String name) {
+        CityDTO cities = superheroRepository.getCity(name);
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 

@@ -189,9 +189,7 @@ public class SuperheroRepository implements ISuperheroRepository {
     }
 
     @Override
-    public List<CityDTO> getCity(String name) {
-        List<CityDTO> superheroesCity = new ArrayList<>();
-
+    public CityDTO getCity(String name) {
         try (Connection con = DriverManager.getConnection(db_url, u_id, pwd)) {
             String SQL = "SELECT city, hero_name FROM city JOIN superhero " +
                     "WHERE superhero.city_ID = city.city_ID AND city =?";
@@ -212,11 +210,10 @@ public class SuperheroRepository implements ISuperheroRepository {
                     heroCity.addSuperhero(heroName);
                 } else {
                     heroCity = new CityDTO(city, new ArrayList<>(List.of(heroName)));
-                    superheroesCity.add(heroCity);
                     currentCity = city;
                 }
             }
-            return superheroesCity;
+            return heroCity;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -233,6 +230,7 @@ public class SuperheroRepository implements ISuperheroRepository {
 
             String currentCity = "";
             CityDTO heroCity = null;
+
             while(rs.next()) {
                 String city = rs.getString("city");
                 String heroName = rs.getString("hero_name");
@@ -244,15 +242,12 @@ public class SuperheroRepository implements ISuperheroRepository {
                     allHeroesInCity.add(heroCity);
                     currentCity = city;
                 }
-
             }
             return allHeroesInCity;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
 }

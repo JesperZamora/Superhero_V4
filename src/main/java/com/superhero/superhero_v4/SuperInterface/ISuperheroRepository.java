@@ -32,11 +32,12 @@ public interface ISuperheroRepository {
         return null;
     }
 
-    default List<CityDTO> getCity(String name) {
+    default CityDTO getCity(String name) {
         return null;
     }
 
     default List<CityDTO> getAllHeroesInCity(){
         return null;
     }
+
 }

@@ -23,7 +23,6 @@ public class Superhero {
         return id;
     }
 
-
     public String getHeroName() {
         return heroName;
     }

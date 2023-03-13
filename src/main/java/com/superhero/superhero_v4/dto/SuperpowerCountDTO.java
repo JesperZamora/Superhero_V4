@@ -11,7 +11,6 @@ public class SuperpowerCountDTO {
         this.count = count;
     }
 
-
     public String getHeroName() {
         return heroName;
     }
